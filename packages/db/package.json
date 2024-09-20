@@ -11,5 +11,8 @@
   "license": "ISC",
   "exports": {
     "./client": "./src/index.ts"
+  },
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2"
   }
 }
