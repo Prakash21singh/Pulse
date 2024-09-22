@@ -17,12 +17,13 @@ import { links } from "@/constants";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 
 const TopBar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full flex justify-between lg:hidden text-white-1  px-6 py-3">
+    <nav className="w-full flex justify-between md:hidden text-white-1  px-6 py-3">
       <Image src={"/images/pulse.png"} alt="logo" width={32} height={32} />
       <Sheet>
         <SheetTrigger asChild>
@@ -51,6 +52,11 @@ const TopBar = () => {
               </SheetClose>
             );
           })}
+          <div key={"logout"} className="absolute bottom-3 left-6">
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
         </SheetContent>
       </Sheet>
     </nav>

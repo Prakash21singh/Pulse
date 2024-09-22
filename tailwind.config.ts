@@ -17,6 +17,7 @@ const config = {
       black: {
         1: "#040D12",
         2: "#323232",
+        3: "#181C14",
       },
       yellow: {
         1: "#FFD369",
@@ -24,6 +25,7 @@ const config = {
       white: {
         1: "#ffffff",
         2: "#EEEEEE",
+        3: "#E5D9F2",
       },
     },
     container: {
