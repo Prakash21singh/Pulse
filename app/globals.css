@@ -16,10 +16,19 @@
   }
 }
 
-.cl-internal-1dauvpw {
+.cl-internal-1dauvpw,
+.cl-internal-1hp5nqm {
   display: none;
 }
+.cl-userButtonPopoverMain {
+  z-index: 10000;
+}
 
+.cl-avatarBox {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

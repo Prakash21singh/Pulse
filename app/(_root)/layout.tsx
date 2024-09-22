@@ -18,6 +18,22 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2">
         <BottomBar />
       </div>
+      <div className="absolute md:hidden bottom-0 right-0">
+        <SignedIn>
+          <div className="p-4 text-center">
+            <UserButton
+              appearance={{
+                variables: {
+                  colorText: "#fff",
+                },
+                layout: {
+                  animations: true,
+                },
+              }}
+            />
+          </div>
+        </SignedIn>
+      </div>
     </section>
   );
 };

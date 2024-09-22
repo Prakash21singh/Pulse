@@ -25,6 +25,7 @@ const TopBar = () => {
   return (
     <nav className="w-full flex justify-between md:hidden text-white-1  px-6 py-3">
       <Image src={"/images/pulse.png"} alt="logo" width={52} height={52} />
+
       <Sheet>
         <SheetTrigger asChild>
           <IconMenu3 className="w-10 h-10 cursor-pointer" />
@@ -33,6 +34,7 @@ const TopBar = () => {
           className="bg-[#122029] border-none flex flex-col items-start justify-normal px-4 py-2"
           side={"left"}>
           <Image src={"/images/pulse.png"} alt="logo" width={52} height={52} />
+          <div key={"logout"} className=" bottom-3 left-6 text-white-1"></div>
           {links.map((link) => {
             const isActive = link.href === pathname;
 
@@ -52,11 +54,6 @@ const TopBar = () => {
               </SheetClose>
             );
           })}
-          <div key={"logout"} className="absolute bottom-3 left-6">
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </div>
         </SheetContent>
       </Sheet>
     </nav>
