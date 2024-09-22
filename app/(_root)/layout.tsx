@@ -1,8 +1,10 @@
 import BottomBar from "@/components/BottomBar";
+import TopBar from "@/components/TopBar";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className="w-full h-screen relative flex overflow-hidden">
+    <section className="w-full h-screen relative flex flex-col overflow-hidden">
+      <TopBar />
       <span className="w-1/2 h-full rounded-full bg-white-1/10 blur-[200px] absolute -left-[30%] -bottom-1/2"></span>
       <div className="w-full h-full container text-white-1">{children}</div>
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2">

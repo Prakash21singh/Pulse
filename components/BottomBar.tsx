@@ -5,7 +5,7 @@ import { links } from "@/constants";
 
 const BottomBar = () => {
   return (
-    <div className="flex items-center justify-center h-fit w-full">
+    <div className={`flex items-center justify-center h-fit w-full `}>
       <FloatingDock desktopClassName="" items={links} />
     </div>
   );
