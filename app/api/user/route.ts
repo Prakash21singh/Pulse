@@ -1,5 +1,4 @@
 import prisma from "@/prisma";
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -11,7 +10,6 @@ export async function GET() {
 export async function POST(req: Request) {
   const body = await req.json();
   const { id, email_addresses, username, image_url } = body?.data;
-
   let email = email_addresses[0].email_address;
 
   try {
@@ -41,8 +39,6 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
-
-    revalidatePath("/");
 
     return NextResponse.json({
       message: "User created SuccessFully",
