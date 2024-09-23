@@ -29,6 +29,60 @@
   height: 40px;
   object-fit: cover;
 }
+
+.cl-cardBox {
+  position: relative;
+  backdrop-filter: blur(10px);
+  z-index: 1;
+  border: none;
+  border-radius: 4px;
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 0px 5px;
+}
+
+.cl-cardBox::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-image: url("/icons/bg2.svg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.cl-cardBox > * {
+  position: relative;
+  z-index: 2;
+}
+
+.cl-socialButtonsIconButton {
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px,
+    rgba(255, 255, 255, 0.08) 0px 2px 3px -1px,
+    rgba(255, 255, 255, 0.02) 0px 1px 0px 0px !important;
+}
+
+.cl-formFieldInput {
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.15) 100%,
+    transparent 0%
+  ) !important;
+  padding: 8px;
+}
+.cl-socialButtonsProviderIcon__github {
+  filter: invert(1);
+}
+.cl-footerActionLink {
+  color: rgba(255, 255, 255, 0.404);
+}
+
+.cl-dividerLine {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

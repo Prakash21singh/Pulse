@@ -6,7 +6,7 @@ import { UserButton } from "@clerk/nextjs";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className="w-full h-screen relative flex flex-col overflow-hidden">
+    <section className="w-full h-dvh relative flex flex-col overflow-hidden">
       <TopBar />
       <div className="absolute right-7 top-7 hidden md:block">
         <SignedIn>
