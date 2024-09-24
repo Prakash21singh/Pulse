@@ -23,12 +23,12 @@ model User {
 
 model Session {
   id              Int           @unique      @default(autoincrement())
-  label           String
+  topic           String
   description     String?
   initialTime     Int
-  remainingTime   Int
-  isPaused        Boolean
-  status          IStatus
+  remainingTime   Int?
+  isPaused        Boolean       @default(true)
+  status          IStatus       @default(INCOMPLETE)
   creator         User          @relation(fields: [creatorId],references: [id])
   creatorId       Int
   createdAt       DateTime      @default(now())

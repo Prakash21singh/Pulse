@@ -27,6 +27,9 @@ const config = {
         2: "#EEEEEE",
         3: "#E5D9F2",
       },
+      red: {
+        1: "#FF0000",
+      },
     },
     container: {
       center: true,

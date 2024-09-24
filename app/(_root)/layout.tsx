@@ -1,6 +1,7 @@
 "use client";
 import BottomBar from "@/components/BottomBar";
 import TopBar from "@/components/TopBar";
+import { Toaster } from "@/components/ui/toaster";
 import { SignedIn } from "@clerk/clerk-react";
 import { UserButton } from "@clerk/nextjs";
 
@@ -34,6 +35,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </SignedIn>
       </div>
+      <Toaster />
     </section>
   );
 };
