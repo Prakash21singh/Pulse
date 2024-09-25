@@ -57,6 +57,7 @@ export function CreateSession() {
         ...sessionData,
       });
 
+      console.log(response);
       if (response.statusText !== "OK")
         throw new Error("Error creating session");
 

@@ -5,7 +5,6 @@ export async function POST(req: Request) {
   try {
     const { topic, description, initialTime, userId } = await req.json();
 
-    console.log();
     const session = await prisma.session.create({
       data: {
         topic,
