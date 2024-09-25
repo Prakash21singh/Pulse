@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useUser } from "@clerk/nextjs"; // Clerk user hook
@@ -19,22 +18,16 @@ import { Label } from "@/components/ui/label"; // shadcn label
 import { Button } from "@/components/ui/button"; // shadcn button
 import { useToast } from "@/hooks/use-toast";
 import { IconChevronDown, IconChevronUp, IconPlus } from "@tabler/icons-react";
+import { createSessionSchema } from "@/validation";
+import { useRouter } from "next/navigation";
 
 // Validation schema using zod
-const createSessionSchema = z.object({
-  label: z.string().min(1, "Session topic is required"),
-  description: z.string().min(5, "Description must be at least 5 characters"),
-  goal: z
-    .number()
-    .min(20, "Minimum goal is 20")
-    .max(400, "Maximum goal is 400"),
-});
 
 export function CreateSession() {
-  const [goal, setGoal] = React.useState(30);
+  const [goal, setGoal] = React.useState(10);
   const { toast } = useToast();
   const { user } = useUser();
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -42,30 +35,32 @@ export function CreateSession() {
   } = useForm({
     resolver: zodResolver(createSessionSchema),
     defaultValues: {
-      label: "",
+      topic: "",
       description: "",
-      goal: 30,
+      initialTime: goal,
     },
   });
 
   function onClick(adjustment: number) {
-    setGoal(Math.max(20, Math.min(400, goal + adjustment)));
+    setGoal(Math.max(10, Math.min(400, goal + adjustment)));
   }
 
   const onSubmit = async (data: any) => {
+    const sessionData = {
+      ...data,
+      userId: user?.id,
+      initialTime: goal,
+    };
+
     try {
       const response = await axios.post("/api/focus", {
-        ...data,
-        userId: user?.id,
+        ...sessionData,
       });
 
       if (response.statusText !== "OK")
         throw new Error("Error creating session");
 
-      toast({
-        title: "Success",
-        description: "Session created successfully!",
-      });
+      router.push("/session");
     } catch (error) {
       toast({
         title: "Error",
@@ -77,9 +72,12 @@ export function CreateSession() {
 
   return (
     <Drawer>
-      <DrawerTrigger asChild>
-        <span className="w-44 h-44 rounded-lg m-3 hover:bg-white-3/70 bg-white-3/40 transition-all flex-center">
-          <IconPlus className="text-3xl" size={40} />
+      <DrawerTrigger asChild className="w-full h-full">
+        <span className="w-full h-[40dvh] md:w-[100dvw] border-2 border-dashed border-black-2 md:h-[60dvh] rounded-lg m-3 hover:bg-black-2/40 bg-black-2/30 flex flex-col items-center gap-3 transition-all flex-center">
+          <IconPlus className="text-3xl text-black-2" size={40} />
+          <p className="text-sm font-medium text-white-3/30">
+            Create Your Focus Session
+          </p>
         </span>
       </DrawerTrigger>
       <DrawerContent>
@@ -93,15 +91,15 @@ export function CreateSession() {
 
           {/* Label Field */}
           <div className="p-4 pb-0 text-white-1">
-            <Label htmlFor="label">Label</Label>
+            <Label htmlFor="label">Topic</Label>
             <Input
               id="label"
-              placeholder="Enter session label"
-              className="text-black-2"
-              {...register("label")}
+              placeholder="eg: DSA, One Month Push..."
+              className="text-white-3/50 bg-black-3/20 border-none"
+              {...register("topic")}
             />
-            {errors.label && (
-              <p className="text-red-1">{errors.label.message}</p>
+            {errors.topic && (
+              <p className="text-red-1">{errors.topic.message}</p>
             )}
           </div>
 
@@ -110,8 +108,8 @@ export function CreateSession() {
             <Label htmlFor="description">Description</Label>
             <Input
               id="description"
-              placeholder="Enter session description"
-              className="text-black-2"
+              placeholder="eg: One hour dedicated to this..."
+              className="text-white-3/50 bg-black-3/20 border-none"
               {...register("description")}
             />
             {errors.description && (
@@ -121,7 +119,7 @@ export function CreateSession() {
 
           {/* Goal Field */}
           <div className="p-4 pb-0 text-white-1">
-            <Label htmlFor="goal">Goal</Label>
+            <Label htmlFor="goal">Session Period</Label>
             <div className="flex items-center justify-center space-x-2 bg-black-3/20 rounded-md">
               <div className="flex-1 text-center">
                 <div className="text-7xl font-bold tracking-tighter text-white-3">
@@ -142,12 +140,15 @@ export function CreateSession() {
                 />
               </div>
             </div>
+            {/* Set the hidden input's value to be directly tied to goal */}
             <Input
               type="hidden"
               value={goal}
-              {...register("goal", { valueAsNumber: true })}
+              {...register("initialTime", { valueAsNumber: true })}
             />
-            {errors.goal && <p className="text-red-1">{errors.goal.message}</p>}
+            {errors.initialTime && (
+              <p className="text-red-1">{errors.initialTime.message}</p>
+            )}
           </div>
 
           <DrawerFooter>

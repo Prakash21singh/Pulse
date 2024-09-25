@@ -11,7 +11,7 @@ datasource db {
 
 model User {
   id              Int           @unique  @default(autoincrement())
-  userId          String?
+  userId          String        @unique
   username        String        @unique
   email           String
   image           String?
@@ -29,8 +29,8 @@ model Session {
   remainingTime   Int?
   isPaused        Boolean       @default(true)
   status          IStatus       @default(INCOMPLETE)
-  creator         User          @relation(fields: [creatorId],references: [id])
-  creatorId       Int
+  creator         User          @relation(fields: [creatorId],references: [userId])
+  creatorId       String
   createdAt       DateTime      @default(now())
 }
 

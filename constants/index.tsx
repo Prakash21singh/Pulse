@@ -5,6 +5,7 @@ import {
   IconBrandGoogleAnalytics,
   IconStopwatch,
 } from "@tabler/icons-react";
+import { PlusIcon } from "lucide-react";
 export const links = [
   {
     title: "Home",
@@ -15,18 +16,18 @@ export const links = [
   },
 
   {
-    title: "Dashboard",
+    title: "Create Session",
     icon: (
-      <IconLayoutDashboard className="h-full w-full text-black-1 dark:text-neutral-300" />
+      <PlusIcon className="h-full w-full text-black-1 dark:text-neutral-300" />
     ),
-    href: "/dashboard",
+    href: "/create-session",
   },
   {
     title: "Focus Session",
     icon: (
       <IconHourglassEmpty className="h-full w-full text-black-1 dark:text-neutral-300" />
     ),
-    href: "/focus",
+    href: "/session",
   },
   {
     title: "Timer",
