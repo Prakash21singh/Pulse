@@ -170,6 +170,7 @@ const SessionCard = ({
 
   return (
     <div className="w-full timer-bg h-96 border border-dashed border-white-2/30 hover:border-white-1/40 transition-all rounded-md p-4 flex flex-col items-center justify-center relative">
+      <div className="absolute w-[100px] h-[100px] bg-[#c7c7c7] opacity-15 blur-lg shadow-[0_0_50px_white] rounded-full transform -rotate-[40deg] left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] "></div>
       <h3 className="text-xl font-semibold">{topic}</h3>
       {description && (
         <p className="text-white-3/40 w-[50%] mx-auto text-center line-clamp-1 ">
@@ -198,11 +199,13 @@ const SessionCard = ({
         </Button>
       </div>
 
-      <Button
-        onClick={enterPiPMode}
-        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-light py-2 px-4 rounded absolute right-0 top-0">
-        <IconWindowMaximize className="w-5 h-5 inline-block mr-2" />
-      </Button>
+      {isActive && (
+        <Button
+          onClick={enterPiPMode}
+          className="bg-blue-500 hover:bg-blue-600 text-white hover:bg-black-2/30 font-light py-2 px-4 rounded absolute right-0 top-0">
+          <IconWindowMaximize className="w-5 h-5 inline-block " />
+        </Button>
+      )}
 
       <video ref={videoRef} className="hidden" />
 
