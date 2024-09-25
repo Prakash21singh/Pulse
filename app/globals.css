@@ -67,7 +67,10 @@
   filter: blur(1px);
   z-index: -1;
 }
-
+.cl-userPreviewMainIdentifier,
+.cl-userPreviewSecondaryIdentifier {
+  color: black;
+}
 .cl-cardBox {
   position: relative;
   backdrop-filter: blur(10px);

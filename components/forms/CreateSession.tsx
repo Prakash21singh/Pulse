@@ -73,7 +73,7 @@ export function CreateSession() {
   return (
     <Drawer>
       <DrawerTrigger asChild className="w-full h-full">
-        <span className="w-full h-[40dvh] md:w-[100dvw] border-2 border-dashed border-black-2 md:h-[60dvh] rounded-lg m-3 hover:bg-black-2/40 bg-black-2/30 flex flex-col items-center gap-3 transition-all flex-center">
+        <span className="w-full h-32 md:w-[100dvw] border-2 border-dashed border-black-2 md:h-[60dvh] rounded-lg m-3 hover:bg-black-2/40 bg-black-2/30 flex flex-col items-center gap-3 transition-all flex-center">
           <IconPlus className="text-3xl text-black-2" size={40} />
           <p className="text-sm font-medium text-white-3/30">
             Create Your Focus Session
