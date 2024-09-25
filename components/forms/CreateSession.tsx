@@ -57,7 +57,6 @@ export function CreateSession() {
         ...sessionData,
       });
 
-      console.log(response);
       if (response.status !== 200) throw new Error("Error creating session");
 
       router.push("/session");
