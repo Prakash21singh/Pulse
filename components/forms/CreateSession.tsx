@@ -58,8 +58,7 @@ export function CreateSession() {
       });
 
       console.log(response);
-      if (response.statusText !== "OK")
-        throw new Error("Error creating session");
+      if (response.status !== 200) throw new Error("Error creating session");
 
       router.push("/session");
     } catch (error) {
