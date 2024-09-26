@@ -30,6 +30,12 @@ const config = {
       red: {
         1: "#FF0000",
       },
+      primary: "#fcd34d",
+      secondary: "#1d4ed8",
+      accent: "#d946ef",
+      background: "#f9fafb",
+      timerColor: "#10b981",
+      error: "#ef4444",
     },
     container: {
       center: true,

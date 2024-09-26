@@ -46,7 +46,51 @@
   width: 40px;
   height: 40px;
   object-fit: cover;
+} /* styles.css */
+.bg-gradient-custom {
+  background: linear-gradient(
+    to bottom right,
+    #1f2937,
+    #000000
+  ); /* Equivalent to bg-gradient-to-br from-gray-900 to-black */
 }
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #2d2b4f;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.timer-display {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.time-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+}
+
+.controls button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #3e3c64;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.controls button:hover {
+  background-color: #5e5b8c;
+}
+
 .timer-bg {
   position: relative;
   /* filter: ; */
