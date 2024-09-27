@@ -148,7 +148,6 @@ const SessionCard = ({
     }
   };
 
-  // Handle PiP exit event
   useEffect(() => {
     const handlePiPExit = () => {
       setIsPiPActive(false);

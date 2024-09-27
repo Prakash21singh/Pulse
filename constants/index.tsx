@@ -1,9 +1,8 @@
 import {
   IconHome,
-  IconLayoutDashboard,
   IconHourglassEmpty,
   IconBrandGoogleAnalytics,
-  IconStopwatch,
+  IconNotes,
 } from "@tabler/icons-react";
 import { PlusIcon } from "lucide-react";
 export const links = [
@@ -30,11 +29,11 @@ export const links = [
     href: "/session",
   },
   {
-    title: "Timer",
+    title: "Notes",
     icon: (
-      <IconStopwatch className="h-full w-full text-black-1 dark:text-neutral-300" />
+      <IconNotes className="h-full w-full text-black-1 dark:text-neutral-300" />
     ),
-    href: "/timer",
+    href: "/notes",
   },
   {
     title: "Tracker",
