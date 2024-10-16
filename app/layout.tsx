@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Head from "next/head";
 import { ClerkProvider } from "@clerk/nextjs";
+import Provider from "./Provider";
 
 export const metadata: Metadata = {
   title: "Pulse",
@@ -28,7 +29,7 @@ export default function RootLayout({
           },
         }}>
         <body className={`bg-black-1 antialiased font-poppins`}>
-          {children}
+          <Provider>{children}</Provider>
         </body>
       </ClerkProvider>
     </html>
